@@ -455,8 +455,13 @@ footer nav ul {
 	border-radius: 60px;
 }
 
-.modal-footer input:hover {
+.modal1 input:hover {
 	cursor: pointer;
 	background-color: white;
 	color: #1D6154;
+}
+
+#btnValider {
+	background-color: #6f717099;
+	cursor: pointer;
 }

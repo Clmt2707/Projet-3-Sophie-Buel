@@ -198,6 +198,26 @@ nextModal();
             .catch(error => console.log(error))
        }
 
+
+//Gestion du background du bouton valider lors de l'envoi du formulaire
+const titleWork = document.querySelector(".labelTitle");
+const categoryWork = document.getElementById("category");
+const imageWork = document.getElementById("photo");
+const btnvalidate = document.getElementById("btnValider");
+
+function validateBtn() {
+    if (titleWork.value !== "" && categoryWork.value !== "" && imageWork.value !== "") {
+        btnvalidate.style.backgroundColor = "#1d6154";
+    } else {
+        btnvalidate.style.backgroundColor = "";
+    }
+}
+
+titleWork.addEventListener("input", validateBtn);
+categoryWork.addEventListener("change", validateBtn);
+imageWork.addEventListener("change", validateBtn);
+
+
 //Gestion du Logout
 
 const logouteve = document.querySelector("#logout");
