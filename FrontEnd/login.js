@@ -8,12 +8,13 @@ function ajoutListenerLogin() {
         var email = document.getElementById("email");
         var password = document.getElementById("password");
         
-        //vérification de la valdité de l'email via regexp
-        let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-        if (!(regex.test(email))) {
-            alert("L'adresse mail n'est pas valide");
+        //vérification de la validité de l'email via regexp
+       let re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (re.test(email.value)){
+            console.log("Email est valide");
+        } else {
+            alert("L'email n'est pas valide");
         }
-
 
         if (email.value === "" || password.value === "") {
             alert("Veuillez renseigner tous les champs.");
