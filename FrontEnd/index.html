@@ -49,19 +49,17 @@
 			<a class="modifier js-modal hide" id="btnmodifier" href="#modal1" aria-hidden="true"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 		</div>
 		<div class="filters not-hidden">
-			<button class="btn-filt active">Tous</button>
-			<button class="btn-filt btn-Objet" data-name="Objets">Objets</button>
-			<button class="btn-filt btn-App" data-name="Appartements">Appartements</button>
-			<button class="btn-filt btn-Hotel" data-name="Hotels & restaurants">Hôtels & restaurants</button>
-
+			<!--Contenu dynamique-->
 		</div>	
-		<div class="gallery"></div>
+		<div class="gallery">
+			<!--Contenu dynamique-->
+		</div>
 	</section>
 
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
+		<form action="" method="post" enctype="multipart/form-data">
 			<label for="name">Nom</label>
 			<input type="text" name="name" id="name">
 			<label for="email">Email</label>
@@ -86,7 +84,7 @@
 
 			<div class="modal2 hidden-mod" style="display: none;">
 				<button class="return-modal"><i class="fa-solid fa-arrow-left-long"></i></button>
-				<button class="js-close-modal"><i class="fa-solid fa-xmark"></i></button>
+				<button class="js-close-modal close2"><i class="fa-solid fa-xmark"></i></button>
 				<h2>Ajout photo</h2>
 				<form id="photo-form">
 					<div class="photo-form-wrapper">
@@ -101,9 +99,9 @@
 							<label for="category">Catégorie</label>
 							<select id="category" name="category">
 								<option id="0" value="" selected disabled></option>
-								<option id="1" value="Objets">Objets</option>
-								<option id="2" value="Appartements">Appartements</option>
-								<option id="3" valuie="Hotels & restaurants">Hôtels & restaurants	</option>
+								<option id="1" value="1">Objets</option>
+								<option id="2" value="2">Appartements</option>
+								<option id="3" value="3">Hôtels & restaurants</option>
 							</select>
 						</div>
 						<div class="modal-footer">	

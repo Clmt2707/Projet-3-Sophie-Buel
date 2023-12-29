@@ -30,8 +30,34 @@ function genererGallery(works) {
 
 genererGallery(works);
 
-//Création des boutons filtres
+//Création dans le DOM des éléments filtres
 
+//création d'un tableau
+var buttonData = [
+    {class: "active", name: "Tous"},
+    {class: "btn-Objet", name: "Objets"},
+    {class: "btn-App", name: "Appartements"},
+    {class: "btn-Hotel", name: "Hôtels & restaurants"}
+]
+//on boucle pour ajouter les classes,textes et autres aux boutons
+for (let j = 0; j < buttonData.length; j++) {
+    let button = document.createElement("button");
+    button.classList.add(buttonData[j].class);
+    button.classList.add("btn-filt");
+    button.innerHTML = buttonData[j].name;
+    button.setAttribute("data-name", buttonData[j].name);
+
+    //on intègre les boutons dans notre div Filters
+    let divFilters = document.querySelector(".filters");
+    divFilters.appendChild(button);
+}
+
+
+
+
+
+
+//fonctions pour filter les projets, utilisation de filter
 const filterAll = document.querySelector(".active");
 filterAll.addEventListener("click",function(){
     const allFiltres = works.filter(() => {
@@ -105,7 +131,6 @@ async function galerieModale(works) {
 }
 
 galerieModale(works);
-
 
 
 /////// MODE ADMINISTRATEUR ////////
@@ -216,6 +241,63 @@ function validateBtn() {
 titleWork.addEventListener("input", validateBtn);
 categoryWork.addEventListener("change", validateBtn);
 imageWork.addEventListener("change", validateBtn);
+
+
+//PréAffichage de l'image ajouter dans le formulaire
+
+
+
+//Ajout d'un nouveau projet 
+const btnValiderAjout = document.getElementById("btnValider");
+btnValiderAjout.addEventListener("click", ajoutProjet);
+
+
+
+function ajoutProjet(event) {
+    event.preventDefault();
+
+    const token = localStorage.getItem("token");
+    const titleWork = document.querySelector(".labelTitle").value;
+    const categoryWork = document.getElementById("category").value;
+    const imageWork = document.getElementById("photo").files[0];
+
+    //Cas où un ou plusieurs champs seraient vides
+    if(!titleWork || !categoryWork || !imageWork) {
+        alert("Veuillez remplir tous les champs.");
+        return;
+    }
+
+    //création du body pour la requête
+    const dataForm = new FormData();
+    dataForm.append("title", titleWork);
+    dataForm.append("category", categoryWork);
+    dataForm.append("image", imageWork);
+
+    //requête via fetch
+    fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            "Authorization" : `Bearer ${token}`,
+        },
+        body: dataForm,
+    })
+    .then(reponse => reponse.json())
+
+    //création et ajout projet
+    .then(work => {
+        
+        galerieModale(work);
+        genererGallery(work);
+   
+        alert("le nouveau projet a bien été ajouté");
+    })
+    .catch(error => console.log(error));
+
+}
+
+
+
+
 
 
 //Gestion du Logout
