@@ -50,12 +50,22 @@ for (let j = 0; j < buttonData.length; j++) {
     //on intègre les boutons dans notre div Filters
     let divFilters = document.querySelector(".filters");
     divFilters.appendChild(button);
+
+
+    //Gestion du background du bouton séléctionné
+    button.addEventListener("click", function(event) {
+        let clickedButton = event.target;
+       
+        //on vérifie sur le bouton cliqué conient la classe active
+        for (let k = 0; k < buttonData.length; k++) {
+            let button = document.querySelector(".active");
+            if (button && button.classList.contains("active")) {
+                button.classList.remove("active");
+            }
+        }
+        clickedButton.classList.add("active");
+    });
 }
-
-
-
-
-
 
 //fonctions pour filter les projets, utilisation de filter
 const filterAll = document.querySelector(".active");
