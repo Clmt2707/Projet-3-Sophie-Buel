@@ -53,7 +53,7 @@ genererGallery(works);
 ///////////////////////////////////Création dans le DOM des éléments filtres////////////////////////////////
 
 //création d'un tableau(possibilité d'ajouter un filtre ici)
-var buttonData = [
+let buttonData = [
     {class: "active", name: "Tous"},
     {class: "btn-Objet", name: "Objets"},
     {class: "btn-App", name: "Appartements"},
@@ -290,9 +290,25 @@ categoryWork.addEventListener("change", validateBtn);
 imageWork.addEventListener("change", validateBtn);
 
 
-//PréAffichage de l'image ajouter dans le formulaire
+//////////////////////////////////////////////// PREVIEW DE L'IMAGE ///////////////////////////////////////////////
 
+const inputFile = document.getElementById("photo");
+const imageAdd = document.querySelector(".imageAdd");
 
+inputFile.addEventListener("change", function(){
+    const image = this.files[0];
+    console.log(image);
+    const reader = new FileReader();
+    reader.onload = ()=> {
+        const imgUrl = reader.result;
+        const img = document.createElement("img");
+        img.src = imgUrl;
+        imageAdd.appendChild(img);
+        img.style.display ="block";
+
+    }
+    reader.readAsDataURL(image)
+})
 
 ///////////////////////////////////////////////// AJOUT D'UN NOUVEAU PROJET ///////////////////////////////////////
 
@@ -304,6 +320,7 @@ btnValiderAjout.addEventListener("click", ajoutProjet);
 function ajoutProjet(event) {
     event.preventDefault();
 
+    
     const token = localStorage.getItem("token");
     const titleWork = document.querySelector(".labelTitle").value;
     const categoryWork = document.getElementById("category").value;
@@ -314,7 +331,6 @@ function ajoutProjet(event) {
         alert("Veuillez remplir tous les champs.");
         return;
     }
-
     //création du body pour la requête
     const dataForm = new FormData();
     dataForm.append("title", titleWork);

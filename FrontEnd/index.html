@@ -49,7 +49,7 @@
 		<div class="projets">
 			<h2>Mes Projets</h2>
 			<!--Ancre Modifier pour gérer les projets en mode admin-->
-			<a class="modifier js-modal hide" id="btnmodifier" href="#modal1" aria-hidden="true"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
+			<a class="modifier js-modal hide" id="btnmodifier" href="#" data-modal-target="#modal1" aria-hidden="true"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 		</div>
 		<div class="filters not-hidden">
 			<!--Contenu dynamique-->
@@ -74,10 +74,10 @@
 	</section>
 
 	<!--Modal-->
-	<aside id="modal1" class="modal" aria-hidden="true" role="dialog" style="display: none;">
+	<aside  id="modal1" class="modal" aria-hidden="true" role="dialog" style="display: none;">
 		<div  class="modal-wrapper js-modal-stop">
 			<!--Première modale qui s'ouvre lorqu'on clique sur "Modifier"-->
-			<div class="modal1 visible-mod">
+			<div  class="modal1 visible-mod">
 				<button class="js-close-modal close1"><i class="fa-solid fa-xmark"></i></button>
 				<h2>Galerie photo</h2>
 				<div class="affiche-gallery">

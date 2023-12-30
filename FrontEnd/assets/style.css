@@ -389,12 +389,20 @@ footer nav ul {
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
  }
 
-.modal-wrapper .js-close-modal {
+.close1 {
 	position: relative;
 	left: 600px;
 	border: none;
 	background-color: #ffffff;
 }
+
+.close2 {
+	position:relative;
+	left: 570px;
+	border: none;
+	background-color: #ffffff;
+}
+
 
 .fa-xmark {
 	font-size: 12px;
@@ -464,4 +472,11 @@ footer nav ul {
 #btnValider {
 	background-color: #6f717099;
 	cursor: pointer;
+}
+
+
+.imageAdd img {
+	width: 180px;
+	height: 168px;
+	position: absolute; 
 }
