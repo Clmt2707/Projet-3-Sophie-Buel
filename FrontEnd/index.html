@@ -13,6 +13,7 @@
 	<script src="https://kit.fontawesome.com/11b2a5c335.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	<!--Barre noire mode edition-->
 	<div class="edit-section hide">
 		<div class="edition-mode">
 			<button id="btn-edit"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -25,6 +26,7 @@
 		<ul>
 			<a href="#portfolio"><li>projets</li></a>
 			<a href="#contact"><li>contact</li></a>
+			<!--Login ou Logout en fonction de mode admin ou pas-->
 			<a href="login.html" class="not-hidden" id="login"><li>login</li></a>
 			<a href="index.html" class="hide" id="logout"><li>logout</li></a>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
@@ -46,6 +48,7 @@
 	<section id="portfolio">
 		<div class="projets">
 			<h2>Mes Projets</h2>
+			<!--Ancre Modifier pour gérer les projets en mode admin-->
 			<a class="modifier js-modal hide" id="btnmodifier" href="#modal1" aria-hidden="true"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 		</div>
 		<div class="filters not-hidden">
@@ -72,16 +75,20 @@
 
 	<!--Modal-->
 	<aside id="modal1" class="modal" aria-hidden="true" role="dialog" style="display: none;">
-		<div class="modal-wrapper js-modal-stop">
+		<div  class="modal-wrapper js-modal-stop">
+			<!--Première modale qui s'ouvre lorqu'on clique sur "Modifier"-->
 			<div class="modal1 visible-mod">
-				<button class="js-close-modal"><i class="fa-solid fa-xmark"></i></button>
+				<button class="js-close-modal close1"><i class="fa-solid fa-xmark"></i></button>
 				<h2>Galerie photo</h2>
-				<div class="affiche-gallery"></div>
+				<div class="affiche-gallery">
+				<!--Contenu dynamique-->
+				</div>
 				<div class="modal-footer">
 					<input type="submit" value="Ajouter une photo" class="ajout-photo">
 				</div>
 			</div>
 
+			<!--2e modale qui s'ouvre lorsqu'on clique sur "Ajouter une photo"(1ere modale)-->
 			<div class="modal2 hidden-mod" style="display: none;">
 				<button class="return-modal"><i class="fa-solid fa-arrow-left-long"></i></button>
 				<button class="js-close-modal close2"><i class="fa-solid fa-xmark"></i></button>
