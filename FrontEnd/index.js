@@ -294,6 +294,9 @@ imageWork.addEventListener("change", validateBtn);
 
 const inputFile = document.getElementById("photo");
 const imageAdd = document.querySelector(".imageAdd");
+const label = document.getElementById("label");
+const para = document.getElementById("paragraphe");
+
 
 inputFile.addEventListener("change", function(){
     const image = this.files[0];
@@ -305,6 +308,9 @@ inputFile.addEventListener("change", function(){
         img.src = imgUrl;
         imageAdd.appendChild(img);
         img.style.display ="block";
+        para.style.display ="none";
+        label.style.display ="none";
+        inputFile.style.display ="none";
 
     }
     reader.readAsDataURL(image)
