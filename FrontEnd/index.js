@@ -247,23 +247,23 @@ nextModal();
                 //on utilise bearer pour indiquer qu'on va utiliser le jeton pour s'authentifier
                 "Authorization": "Bearer " + localStorage.token,
              }
-         })
+        })
             .then(response => {
-                if (!response.ok) {
-                    console.log("Error: work not deleted")
+                if (!response.ok){
+                throw new error ('La supression du travail à echoué.');
+              }
+              const modalWorkToRemove = document.querySelector(`figure[data-id="${workId}"]`);
+              if (modalWorkToRemove) {
+                modalWorkToRemove.remove();
+                
+                const galleryWorkToRemove = document.querySelector(`figure[data-id="${workId}"]`);
+                if (galleryWorkToRemove) {
+                    galleryWorkToRemove.remove();
                 } else {
-
-                    const deleteModalWork = document.querySelector(`figure[data-id="${workId}"]`);
-                    if (deleteModalWork) {
-                        deleteModalWork.remove();
-
-                        const deleteGalleryWork = document.querySelector(`figure[data-id="${workId}"]`);
-                        if (deleteGalleryWork) {
-                            deleteGalleryWork.remove();
-                        } else {
-                            console.log("Work not found in gallery");
-                        } 
-                    }
+                    console.error('Élément à supprimer non trouvé dans la galerie principale');
+                }
+                } else {
+                    console.error('Élément à supprimer non trouvé dans la modale');
                 }
             })
             .catch(error => console.log(error))
@@ -324,10 +324,7 @@ btnValiderAjout.addEventListener("click", ajoutProjet);
 
 
 function ajoutProjet(event) {
-    event.preventDefault();
-
-    
-    const token = localStorage.getItem("token");
+   
     const titleWork = document.querySelector(".labelTitle").value;
     const categoryWork = document.getElementById("category").value;
     const imageWork = document.getElementById("photo").files[0];
@@ -347,7 +344,7 @@ function ajoutProjet(event) {
     fetch("http://localhost:5678/api/works", {
         method: "POST",
         headers: {
-            "Authorization" : `Bearer ${token}`,
+            "Authorization" : "Bearer " + localStorage.token,
         },
         body: dataForm,
     })
@@ -355,7 +352,6 @@ function ajoutProjet(event) {
 
     //création et ajout projet
     .then(work => {
-        
         galerieModale(work);
         genererGallery(work);
    
